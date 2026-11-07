@@ -1,0 +1,8 @@
+{
+  "name": "Remix Abrar Medical Store System",
+  "description": "A secure, modular management system for pharmacy inventory, sales, and accounts with a robust, scalable backend architecture.",
+  "requestFramePermissions": [],
+  "majorCapabilities": [
+    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
+  ]
+}

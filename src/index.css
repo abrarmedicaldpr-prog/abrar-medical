@@ -1,0 +1,152 @@
+@import "tailwindcss";
+
+/* ========================================================
+   GLOBAL PRINTING STYLESHEET — ABRAR MEDICAL STORE ERP
+   Applies to all native browser printing, Save as PDF,
+   reports, ledgers, vouchers, statements, and invoices.
+   ======================================================== */
+
+@media print {
+  /* 1. Page Configuration: default clean standard margins */
+  @page {
+    size: auto;
+    margin: 8mm 10mm 10mm 10mm;
+  }
+
+  /* 2. Color fidelity: force exact backgrounds, table headers, borders, and status badges */
+  *,
+  *::before,
+  *::after {
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+    color-adjust: exact !important;
+    text-shadow: none !important;
+  }
+
+  /* 3. Unlock root layout and viewports so content paginates across multi-page documents without cutting off */
+  html,
+  body,
+  #root,
+  #root > div,
+  .h-screen,
+  .max-h-screen,
+  .min-h-screen,
+  .w-screen,
+  .overflow-hidden,
+  .overflow-y-auto,
+  .overflow-x-auto,
+  main {
+    overflow: visible !important;
+    height: auto !important;
+    max-height: none !important;
+    min-height: 0 !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    position: static !important;
+  }
+
+  body {
+    background: #ffffff !important;
+    color: #0f172a !important;
+    font-size: 10.5pt !important;
+    margin: 0 !important;
+    padding: 0 !important;
+  }
+
+  /* 4. Hide Application Shell elements (sidebar, top header, shortcuts, non-printable buttons, search/filter bars) */
+  aside,
+  header,
+  nav,
+  .print\:hidden,
+  .no-print,
+  button,
+  input[type="button"],
+  .quick-shortcuts-bar,
+  .sticky:not(.print-keep-sticky),
+  .fixed:not(.print-modal-container) {
+    display: none !important;
+  }
+
+  /* 5. Clean up main workspace wrapper for print */
+  main {
+    padding: 0 !important;
+    margin: 0 !important;
+    background: transparent !important;
+    box-shadow: none !important;
+  }
+
+  /* 6. Professional Table Layout & Pagination */
+  table {
+    width: 100% !important;
+    border-collapse: collapse !important;
+    page-break-inside: auto !important;
+  }
+
+  thead {
+    display: table-header-group !important; /* Repeats table header on every printed page! */
+  }
+
+  tfoot {
+    display: table-footer-group !important;
+  }
+
+  tr {
+    page-break-inside: avoid !important;
+    break-inside: avoid !important;
+  }
+
+  th,
+  td {
+    word-break: normal !important;
+  }
+
+  /* 7. Preserving containers and preventing unwanted blank pages */
+  .ams-page-break-after {
+    page-break-after: always !important;
+    break-after: page !important;
+  }
+
+  .ams-avoid-break {
+    page-break-inside: avoid !important;
+    break-inside: avoid !important;
+  }
+
+  /* 8. Show print-only elements */
+  .print\:block {
+    display: block !important;
+  }
+  .print\:flex {
+    display: flex !important;
+  }
+  .print\:table-row {
+    display: table-row !important;
+  }
+  .print\:table-header-group {
+    display: table-header-group !important;
+  }
+
+  /* 9. Ensure cards and paper sheets have clean borders and no dark card drop-shadows */
+  .shadow-xs,
+  .shadow-sm,
+  .shadow-md,
+  .shadow-lg,
+  .shadow-xl,
+  .shadow-2xs {
+    box-shadow: none !important;
+  }
+
+  /* 10. Thermal printer specific overrides when element has .thermal-receipt */
+  .thermal-receipt,
+  .thermal-80mm {
+    max-width: 74mm !important;
+    width: 74mm !important;
+    margin: 0 auto !important;
+    font-size: 10px !important;
+  }
+  .thermal-58mm {
+    max-width: 52mm !important;
+    width: 52mm !important;
+    margin: 0 auto !important;
+    font-size: 9px !important;
+  }
+}
